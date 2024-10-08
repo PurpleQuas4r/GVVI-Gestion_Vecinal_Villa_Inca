@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('https://cdn-icons-png.flaticon.com/512/32/32441.png'), url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Logo_DuocUC.svg/2560px-Logo_DuocUC.svg.png'); /* Múltiples imágenes */
+            background-position: right, top left; /* Posiciona cada imagen */
+            background-size: auto, 450px; /* Tamaño de cada imagen */
+            background-repeat: no-repeat, no-repeat; /* Evita que las imágenes se repitan */
+            
+        }
+
+        .login-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #6ab04c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .login-container input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+
+        .error-message {
+            color: red;
+            text-align: center;
+        }
+
+        .login-container p {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
+
+        .login-container p a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        .login-container p a:hover {
+            text-decoration: underline;
+        }
+
+        .forgot-password {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .forgot-password a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Iniciar Sesión</h2>
+        <?php if (isset($error)): ?>
+            <p class="error-message"><?= $error; ?></p>
+        <?php endif; ?>
+        <form action="login.php" method="post">
+            <input type="text" name="username" placeholder="Usuario" required>
+            <input type="password" name="password" placeholder="Contraseña" required>
+            <input type="submit" value="Iniciar Sesión">
+        </form>
+        <div class="forgot-password">
+            <p><a href="Plantilla recuperacion password.html">¿Olvidó su contraseña?</a></p>
+        </div>
+        <p>En caso de no tener cuenta <a href="Plantilla registro de usuario.html">Registrese aquí</a></p>
+    </div>
+
+</body>
+</html>
