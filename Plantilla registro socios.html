@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Socios</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f7f7f7;
+        }
+
+        .registro-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .registro-container input[type="text"],
+        .registro-container input[type="email"],
+        .registro-container input[type="tel"],
+        .registro-container input[type="date"],
+        .registro-container select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .registro-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #6ab04c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .registro-container input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+
+        .error-message {
+            color: red;
+            text-align: center;
+        }
+
+        .registro-container p {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
+
+        .registro-container p a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        .registro-container p a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+    <script>
+        function mostrarAlerta(event) {
+            event.preventDefault(); // Evita que el formulario se envíe automáticamente
+            alert("Socio Registrado Satisfactoriamente");
+            document.getElementById('registroForm').submit(); // Enviar el formulario después de mostrar la alerta
+        }
+        function validarTelefono(input) {
+            const valor = input.value;
+
+            // Expresión regular para aceptar solo + y números
+            const regex = /^\+?\d*$/;
+
+            // Si el valor no cumple con la expresión, se elimina el último carácter
+            if (!regex.test(valor)) {
+                input.value = valor.slice(0, -1);
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div class="registro-container">
+        <h2>Registro de Socios</h2>
+        <?php if (isset($error)): ?>
+            <p class="error-message"><?= $error; ?></p>
+        <?php endif; ?>
+        <form id="registroForm" action="procesar_registro.php" method="post" onsubmit="mostrarAlerta(event)">
+            <!-- Rut -->
+            <input type="text" name="rut" placeholder="Rut (ej: 12345678-9)" pattern="^\d{7,8}-[kK\d]{1}$" required>
+
+            <!-- Nombre Completo -->
+            <input type="text" name="nombre" placeholder="Nombre Completo" required>
+
+            <!-- Apellido Completo -->
+            <input type="text" name="apellido" placeholder="Apellido Completo" required>
+
+            <!-- Dirección -->
+            <input type="text" name="direccion" placeholder="Dirección" required>
+
+            <!-- Campo de teléfono con validación de solo números y + -->
+            <input type="tel" name="telefono" id="telefono" placeholder="Ingrese su teléfono" maxlength="12" required oninput="validarTelefono(this)" pattern="\+?[0-9]*">
+
+            <!-- Correo Electrónico -->
+            <input type="email" name="correo" placeholder="Correo Electrónico" required>
+
+            <!-- Fecha de nacimiento -->
+            <label for="fecha_nacimiento">Fecha de nacimiento:</label>
+            <input type="date" name="fecha_nacimiento" required>
+
+            <!-- Oficio/Profesión -->
+            <input type="text" name="profesion" placeholder="Oficio/Profesión" required>
+
+            <!-- Botón para enviar -->
+            <input type="submit" value="Registrar">
+        </form>
+    </div>
+
+</body>
+</html>
