@@ -74,6 +74,21 @@
             text-decoration: underline;
         }
     </style>
+
+    <script>
+        function validarTelefono(input) {
+            const valor = input.value;
+
+            // Expresión regular para aceptar solo + y números
+            const regex = /^\+?\d*$/;
+
+            // Si el valor no cumple con la expresión, se elimina el último carácter
+            if (!regex.test(valor)) {
+                input.value = valor.slice(0, -1);
+            }
+        }
+    </script>
+
 </head>
 <body>
 
@@ -84,7 +99,10 @@
         
         <form action="procesar_registro.php" method="post">
             <!-- Campo Nombre -->
-            <input type="text" name="nombre" placeholder="Nombre completo" required>
+            <input type="text" name="nombre" placeholder="Nombre Completo" required>
+
+            <!-- Campo Apellido -->
+            <input type="text" name="apellido" placeholder="Apellido Completo" required>
 
             <!-- Campo RUT -->
             <input type="text" name="rut" placeholder="RUT (12345678-K)" pattern="\d{7,8}-[0-9Kk]{1}" title="Formato del rut: 12345678-9 o 12345678-K" required>
@@ -92,14 +110,17 @@
             <!-- Campo Correo Electrónico -->
             <input type="email" name="correo" placeholder="Correo electrónico" required>
 
-            <!-- Campo Número de Teléfono -->
-            <input type="tel" name="telefono" placeholder="Número de teléfono (+569 12345678)" pattern="[0-9]{9}" title="Debe ser un número de 9 dígitos" required>
+            <!-- Campo Nombre -->
+            <input type="text" name="direccion" placeholder="Dirección" required>
+
+            <!-- Campo de teléfono con validación de solo números y + -->
+            <input type="tel" name="telefono" id="telefono" placeholder="Ingrese su teléfono" maxlength="12" required oninput="validarTelefono(this)" pattern="\+?[0-9]*">
 
             <!-- Botón de Enviar -->
             <input type="submit" value="Registrar">
         </form>
 
-        <p><a href="Intento login.html">Volver a inicio de sesión</a></p>
+        <p><a href="Plantilla inicio sesion.html">Volver a inicio de sesión</a></p>
     </div>
 </body>
 </html>
