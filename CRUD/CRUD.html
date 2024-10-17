@@ -105,30 +105,36 @@
                 <th>Acciones</th>
             </tr>
         </thead>
-        <tbody>
-            <!-- Este es un ejemplo estático. Los registros reales serán generados dinámicamente con PHP. -->
-            <tr>
-                <td>Juan Pérez</td>
-                <td>12.345.678-9</td>
-                <td>+56912345678</td>
-                <td>juan@example.com</td>
-                <td>
-                    <button class="delete-btn" onclick="alert('Socio Eliminado')">Eliminar</button>
-                    <button class="delete-btn" onclick="alert('Editar Socio')">Editar</button>
-                </td>
-            </tr>
-            <!-- Aquí se agregarán más registros dinámicamente -->
-        </tbody>
     </table>
 
     <!-- Formulario para añadir o editar socios -->
     <form action="crud.php" method="POST">
-        <input type="hidden" name="id" value="">
-        <input type="text" name="nombre" placeholder="Nombre Completo" required>
-        <input type="text" name="rut" placeholder="Rut" required>
-        <input type="tel" name="telefono" placeholder="Teléfono" required pattern="\+?[0-9]{8,12}" title="Formato: +569xxxxxxxx">
-        <input type="email" name="correo" placeholder="Correo Electrónico" required>
-        <input type="submit" value="Guardar">
+            <!-- Rut -->
+            <input type="text" name="rut" placeholder="Rut (ej: 12345678-9)" pattern="^\d{7,8}-[kK\d]{1}$" required>
+
+            <!-- Nombre Completo -->
+            <input type="text" name="nombre" placeholder="Nombre Completo" required>
+
+            <!-- Apellido Completo -->
+            <input type="text" name="apellido" placeholder="Apellido Completo" required>
+
+            <!-- Dirección -->
+            <input type="text" name="direccion" placeholder="Dirección" required>
+
+            <!-- Campo de teléfono con validación de solo números y + -->
+            <input type="tel" name="telefono" id="telefono" placeholder="Ingrese su teléfono" maxlength="12" required oninput="validarTelefono(this)" pattern="\+?[0-9]*">
+
+            <!-- Correo Electrónico -->
+            <input type="email" name="correo" placeholder="Correo Electrónico" required>
+
+            <!-- Fecha de nacimiento -->
+            <label for="fecha_nacimiento">Fecha de nacimiento:</label>
+            <input type="date" name="fecha_nacimiento" required>
+
+            <!-- Oficio/Profesión -->
+            <input type="text" name="profesion" placeholder="Oficio/Profesión" required>
+
+            <input type="submit" value="Guardar">
     </form>
 </div>
 
