@@ -1,0 +1,426 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #F1F4FA;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+    width: 200px;
+    height: auto;
+}
+
+.hamburger {
+    font-size: 24px;
+    cursor: pointer;
+    display: none;
+}
+
+.user-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.icon-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #3086FF;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.icon-button:hover {
+    background-color: #2674CC;
+}
+
+.icon-button img {
+    width: 20px;
+    height: 20px;
+}
+
+.profile-button {
+    background-color: #4CAF50;
+}
+
+.logout-button {
+    background-color: #FF4C4C;
+}
+
+/* Sidebar */
+.container {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+}
+
+#sidebar {
+    width: 250px;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: width 0.3s;
+}
+
+#sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+#sidebar ul li {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+#sidebar ul li a.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    padding-right: 10px;
+    font-weight: 600;
+}
+
+#sidebar ul li a.menu-item .icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+#sidebar ul li a.menu-item .chevron {
+    margin-left: auto;
+    font-size: 20px;
+    transition: transform 0.3s;
+}
+
+#sidebar ul li a.menu-item:hover {
+    color: #3086FF;
+}
+
+.user-info {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.user-info img.user-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.user-info p {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.user-info span {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Submenu */
+.submenu {
+    display: none;
+    list-style: none;
+    padding-left: 30px;
+    background-color: #f9f9f9;
+    margin-top: 5px;
+    transition: max-height 0.3s ease;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.submenu li {
+    padding: 5px 0;
+}
+
+.submenu li a {
+    text-decoration: none;
+    color: #666;
+    font-size: 14px;
+}
+
+.submenu li a:hover {
+    color: #3086FF;
+}
+
+/* ---------------- CONTENIDO ----------------  */
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #E8EFF9;
+    border-radius: 12px;
+}
+
+/* Encabezado para certificados */
+.certificate-header {
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.certificate-header h2 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.search-bar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-bar input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+}
+
+.btn {
+    padding: 10px 15px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.search-btn {
+    background-color: #3086FF;
+}
+
+.issue-btn {
+    background-color: #4CAF50;
+}
+
+/* Tabla de certificados */
+.certificate-table-container {
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.certificate-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.certificate-table th,
+.certificate-table td {
+    padding: 10px 15px;
+    text-align: center;
+}
+
+.certificate-table th {
+    background-color: #3086FF;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.certificate-table td {
+    color: #333;
+    background-color: white;
+}
+
+.certificate-table tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+.action-btn {
+    background-color: #3086FF;
+}
+
+/* ---------------- MODAL ----------------  */
+
+.modal {
+    display: none; /* Ocultar inicialmente */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Asegurar visibilidad superior */
+    visibility: hidden; /* Ocultar inicialmente */
+    opacity: 0; /* Hacerlo invisible */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Animación suave */
+}
+
+.modal.show { /* Clase activa */
+    display: flex;
+    visibility: visible;
+    opacity: 1; /* Hacerlo visible */
+}
+
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    width: 60%;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.close-modal-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #333;
+}
+
+.close-modal-btn:hover {
+    color: #FF4C4C; /* Cambiar color al pasar el cursor */
+}
+
+
+.image-placeholder {
+    width: 100%;
+    height: 200px;
+    background-color: #f1f1f1;
+    border: 1px dashed #ccc;
+    border-radius: 5px;
+}
+
+
+.modal-content h2 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.modal-body {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.modal-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal-left label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.modal-left input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    font-size: 14px;
+}
+
+.modal-right {
+    flex: 0.8;
+    text-align: center;
+}
+
+.modal-right p {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0;
+}
+
+.modal-right h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    margin: 10px 0;
+}
+
+/* Modal Actions */
+.modal-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.modal-actions .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.accept-btn {
+    background-color: #3086FF;
+    color: white;
+}
+
+.reject-btn {
+    background-color: #FF4C4C;
+    color: white;
+}
+
+
+
+@media (max-width: 768px) {
+    #sidebar {
+        display: none;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        background-color: white;
+    }
+
+    #sidebar.active {
+        display: block;
+    }
+
+    .hamburger {
+        display: block;
+    }
+}
